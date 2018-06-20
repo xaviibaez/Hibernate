@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-feb-2018 17:51:12 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="Inscripcions" table="inscripcions" catalog="hmoodle">
+        <id name="idInscripcio" type="java.lang.Integer">
+            <column name="idInscripcio" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuari" class="Usuari" fetch="select">
+            <column name="idAlumne" not-null="true" />
+        </many-to-one>
+        <many-to-one name="grupmoodle" class="Grupmoodle" fetch="select">
+            <column name="idGrup" not-null="true" />
+        </many-to-one>
+        <property name="tasquesPendents" type="int">
+            <column name="tasquesPendents" not-null="true" />
+        </property>
+        <property name="tasquesAvaluades" type="int">
+            <column name="tasquesAvaluades" not-null="true" />
+        </property>
+        <property name="dataAltaInscripcio" type="date">
+            <column name="dataAltaInscripcio" length="10" />
+        </property>
+        <property name="dataBaixaInscripcio" type="date">
+            <column name="dataBaixaInscripcio" length="10" />
+        </property>
+        <property name="autoInscripcio" type="boolean">
+            <column name="autoInscripcio" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-feb-2018 17:51:12 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="Grupmoodle" table="grupmoodle" catalog="hmoodle">
+        <id name="idGrupMoodle" type="int">
+            <column name="idGrupMoodle" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuari" class="Usuari" fetch="select">
+            <column name="ProfessorReponsable" />
+        </many-to-one>
+        <property name="nomGrupMoodle" type="string">
+            <column name="nomGrupMoodle" length="11" unique="true" />
+        </property>
+        <property name="desciripcioGrupMoodle" type="string">
+            <column name="desciripcioGrupMoodle" length="24" />
+        </property>
+        <property name="actiu" type="java.lang.Boolean">
+            <column name="actiu" />
+        </property>
+        <property name="autoInscripcioGrup" type="boolean">
+            <column name="autoInscripcioGrup" not-null="true" />
+        </property>
+        <set name="inscripcionses" table="inscripcions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idGrup" not-null="true" />
+            </key>
+            <one-to-many class="Inscripcions" />
+        </set>
+    </class>
+</hibernate-mapping>

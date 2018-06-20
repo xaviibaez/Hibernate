@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="hmoodle" match-name="cursos"/>
+  <table-filter match-catalog="hmoodle" match-name="grupmoodle"/>
+  <table-filter match-catalog="hmoodle" match-name="inscripcions"/>
+  <table-filter match-catalog="hmoodle" match-name="tipususuari"/>
+  <table-filter match-catalog="hmoodle" match-name="usuari"/>
+</hibernate-reverse-engineering>

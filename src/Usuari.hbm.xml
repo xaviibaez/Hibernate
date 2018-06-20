@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-feb-2018 17:51:12 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="Usuari" table="usuari" catalog="hmoodle">
+        <id name="idUsuari" type="java.lang.Integer">
+            <column name="idUsuari" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cursos" class="Cursos" fetch="select">
+            <column name="curs" />
+        </many-to-one>
+        <many-to-one name="tipususuari" class="Tipususuari" fetch="select">
+            <column name="idTipusUsuari" not-null="true" />
+        </many-to-one>
+        <property name="nomUsuari" type="string">
+            <column name="nomUsuari" length="15" />
+        </property>
+        <property name="cognom1usuari" type="string">
+            <column name="cognom1Usuari" length="15" />
+        </property>
+        <property name="cognom2usuari" type="string">
+            <column name="cognom2Usuari" length="15" />
+        </property>
+        <property name="dni" type="string">
+            <column name="DNI" length="8" unique="true" />
+        </property>
+        <property name="codiUsuari" type="string">
+            <column name="codiUsuari" length="6" unique="true" />
+        </property>
+        <property name="bloquejat" type="java.lang.Boolean">
+            <column name="bloquejat" />
+        </property>
+        <property name="dataAlta" type="date">
+            <column name="dataAlta" length="10" />
+        </property>
+        <property name="dataBaixa" type="date">
+            <column name="dataBaixa" length="10" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="15" />
+        </property>
+        <set name="cursoses" table="cursos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tutor" />
+            </key>
+            <one-to-many class="Cursos" />
+        </set>
+        <set name="grupmoodles" table="grupmoodle" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProfessorReponsable" />
+            </key>
+            <one-to-many class="Grupmoodle" />
+        </set>
+        <set name="inscripcionses" table="inscripcions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAlumne" not-null="true" />
+            </key>
+            <one-to-many class="Inscripcions" />
+        </set>
+    </class>
+</hibernate-mapping>

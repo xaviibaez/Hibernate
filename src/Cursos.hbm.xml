@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-feb-2018 17:51:12 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="Cursos" table="cursos" catalog="hmoodle">
+        <id name="curs" type="int">
+            <column name="curs" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuari" class="Usuari" fetch="select">
+            <column name="tutor" />
+        </many-to-one>
+        <property name="descripcio" type="string">
+            <column name="descripcio" length="5" />
+        </property>
+        <set name="usuaris" table="usuari" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="curs" />
+            </key>
+            <one-to-many class="Usuari" />
+        </set>
+    </class>
+</hibernate-mapping>
